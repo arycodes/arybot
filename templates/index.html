@@ -109,12 +109,13 @@
             {% for entry in data %}
             <div class="message {% if entry[0] == 'You' %} user-message {% else %} bot-message {% endif %}">
                 <strong>{{ entry[0] }}:</strong>
-                <p id="messagecontent"> {{ entry[1] }}</p>
+                <p class="messagecontent"> {{ entry[1] }}</p>
             </div>
             {% endfor %}
         </div>
-        <p style="font-family: Arial, sans-serif; font-size: 16px; color: #333;margin: 0 auto;display: flex;width: 100%;justify-content: center;flex-wrap: wrap;padding: 3px 4px;">
-            if you cannot see the response in output ,  try : <a href="{{ url_for('reset') }}"
+        <p
+            style="font-family: Arial, sans-serif; font-size: 16px; color: #333;margin: 0 auto;display: flex;width: 100%;justify-content: center;flex-wrap: wrap;padding: 3px 4px;">
+            if you cannot see the response in output , try : <a href="{{ url_for('reset') }}"
                 style="color: #007bff; text-decoration: none;">Reset Chat</a>
         </p>
         <form class="input-form" id="inputForm" method="post">
@@ -129,7 +130,7 @@
         // Function to convert Markdown to HTML
         function convertMarkdownToHTML() {
             // Select all elements with the id 'messagecontent'
-            var userMessageElements = document.querySelectorAll('[id="messagecontent"]');
+            var userMessageElements = document.querySelectorAll('[class="messagecontent"]');
 
             // Iterate over each selected element
             userMessageElements.forEach(function (userMessageElement) {
@@ -137,17 +138,30 @@
                     .replace(/&quot;/g, '"')
                     .replace(/&#34;/g, '"')
                     .replace(/&#39;/g, "'");
+
                 var userMessageHTML = marked.parse(userMessageMarkdown);
                 userMessageElement.innerHTML = userMessageHTML;
 
             });
+
+            userMessageElements[userMessageElements.length - 2].setAttribute("id", "lastchat");
         }
 
         // Call the function when the page loads
         window.onload = convertMarkdownToHTML;
         window.addEventListener('load', function () {
-            window.scrollTo(0, document.body.scrollHeight);
+            scrollToElementById('lastchat');
         });
+
+
+        function scrollToElementById(elementId) {
+            var element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+
     </script>
 </body>
 
