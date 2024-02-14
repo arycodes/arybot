@@ -4,8 +4,7 @@ import google.generativeai as genai
 
 
 
-from flask import Flask, render_template, request, redirect, url_for, session
-
+from flask import Flask, render_template, request, redirect, url_for, session ,send_from_directory
 load_dotenv()  # Load environment variables
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -14,6 +13,13 @@ chat = model.start_chat(history=[])
 
 app = Flask(__name__)
 app.secret_key = "new"
+
+
+@app.route('/images/<path:filename>')
+def send_image(filename):
+    return send_from_directory('static', filename)
+
+
 
 
 def get_gemini_response(question):

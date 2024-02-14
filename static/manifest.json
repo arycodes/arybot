@@ -1,0 +1,26 @@
+{
+    "name": "AryBot",
+    "version": "1.0.0",
+    "description": "A chatbot application powered by Flask and Google Generative AI.",
+    "author": "Aryan",
+    "language": "python",
+    "main": "main.py",
+    "scripts": {
+        "start": "python main.py"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "flask": "^2.1.0",
+        "google-generativeai": "^1.0.0"
+    },
+    "icons": {
+        "256":"/images/icon.jpg"
+    },
+    "keywords": [
+        "chatbot",
+        "flask",
+        "AI",
+        "Google Generative AI"
+    ],
+    "homepage_url": "https://arybot.vercel.app.com"
+}
