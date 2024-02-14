@@ -4,7 +4,7 @@
     "description": "An app Special For Text Generation based on Google generativeai ",
     "start_url": "/",
     "display": "standalone",
-    "orientation": "any",
+    "orientation": "portrait",
     "background_color": "#ffffff",
     "theme_color": "#333",
     "lang": "en",
