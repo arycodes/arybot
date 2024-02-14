@@ -31,7 +31,7 @@ function scrollToElementById(elementId) {
    
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/static/service_worker.js')
+                navigator.serviceWorker.register('/images/service_worker.js')
                 .then(function(registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 }, function(err) {
