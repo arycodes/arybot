@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
@@ -16,7 +19,6 @@ body {
 .messagebox {
     border: 1px solid #ccc;
     padding: 10px;
-    /* max-height: 300px; */
     overflow-y: auto;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -91,4 +93,42 @@ form {
     bottom: 0;
     padding: 20px;
     background-color: white;
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    transition: top 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#install-button {
+    background-color: #53a6ff;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
+
+}
+
+
+#logoname{
+    font-size: 20px;
+
 }

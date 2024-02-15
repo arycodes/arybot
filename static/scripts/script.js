@@ -11,10 +11,10 @@ function convertMarkdownToHTML() {
         userMessageElement.innerHTML = userMessageHTML;
 
     });
-if (userMessageElements[userMessageElements.length - 2]){
+    if (userMessageElements[userMessageElements.length - 2]) {
 
-    userMessageElements[userMessageElements.length - 2].setAttribute("id", "lastchat");
-}
+        userMessageElements[userMessageElements.length - 2].setAttribute("id", "lastchat");
+    }
 }
 
 window.onload = convertMarkdownToHTML;
@@ -31,3 +31,42 @@ function scrollToElementById(elementId) {
 }
 
 
+let lastScrollTop = 0;
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        // Scroll down
+        header.style.top = `-${header.clientHeight}px`;
+    } else {
+        // Scroll up
+        header.style.top = 0;
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+
+
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    showInstallButton();
+});
+
+function showInstallButton() {
+    const installButton = document.getElementById('install-button');
+    installButton.style.display = 'block';
+
+    installButton.addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+            deferredPrompt = null;
+        });
+    });
+}

@@ -6,10 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AryBot-AryCodes Chat Interface</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/stylesmain.css') }}">
-<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 </head>
 
 <body>
+
+    <style>
+        #loading-bar {
+            width: 20%;
+            height: 4px;
+            background-color: #007bff;
+            /* Loading bar color */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+    </style>
+
+    <div id="loading-bar"></div>
+
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState === "complete") {
+                document.getElementById('loading-bar').style.width = '100%';
+                setTimeout(function () {
+                    document.getElementById('loading-bar').style.display = 'none';
+                }, 300);
+            }
+        };
+
+    </script>
+    <header id="header">
+        <h1 style="color: black;margin: 0;" id="logoname">Arybot</h1>
+        <button id="install-button">Install App</button>
+    </header>
     <div class="container">
         <div class="messagebox" id="messagebox">
             {% for entry in data %}
@@ -21,7 +53,7 @@
         </div>
         <p
             style="font-family: Arial, sans-serif; font-size: 16px; color: #333;margin: 0 auto;display: flex;width: 100%;justify-content: center;flex-wrap: wrap;padding: 3px 4px;">
-            if you cannot see the response in output , try : <a href="{{ url_for('reset') }}"
+            if response can't be seen in output , try : <a href="{{ url_for('reset') }}"
                 style="color: #007bff; text-decoration: none;">Reset Chat</a>
         </p>
         <form class="input-form" id="inputForm" method="post">
@@ -29,6 +61,8 @@
             <button type="submit">Send</button>
         </form>
     </div>
+
+
 
 
     <script src="{{ url_for('static', filename='scripts/marked.min.js') }}"></script>
