@@ -28,18 +28,18 @@ function scrollToElementById(elementId) {
     if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-   
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/images/service_worker.js')
-                .then(function(registration) {
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/images/service_worker.js')
+                .then(function (registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
+                }, function (err) {
                     console.log('ServiceWorker registration failed: ', err);
                 });
-            });
-        }
-   
+        });
+    }
+
 }
 
 
@@ -82,3 +82,39 @@ function showInstallButton() {
         });
     });
 }
+
+
+
+let isSpeaking = false;
+let speech;
+
+function speakMessage(button) {
+    const messageElement = button.previousElementSibling;
+    const messageText = messageElement.textContent.trim();
+
+    if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        button.innerHTML = `<i class="fas fa-volume-off"></i>       `
+        
+    } else {
+        speech = new SpeechSynthesisUtterance(messageText);
+        button.innerHTML = `<i class="fas fa-volume-up"></i>        `
+
+        const voices = window.speechSynthesis.getVoices();
+        const selectedVoice = voices.find(voice => voice.lang === 'en-US');
+
+        speech.voice = selectedVoice;
+
+        window.speechSynthesis.speak(speech);
+        isSpeaking = true;
+    }
+}
+
+function stopSpeaking() {
+    if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+    }
+}
+
