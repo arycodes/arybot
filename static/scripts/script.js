@@ -96,7 +96,7 @@ function speakMessage(button) {
         window.speechSynthesis.cancel();
         isSpeaking = false;
         button.innerHTML = `<i class="fas fa-volume-off"></i>       `
-        
+
     } else {
         speech = new SpeechSynthesisUtterance(messageText);
         button.innerHTML = `<i class="fas fa-volume-up"></i>        `
@@ -105,6 +105,11 @@ function speakMessage(button) {
         const selectedVoice = voices.find(voice => voice.lang === 'en-US');
 
         speech.voice = selectedVoice;
+
+        speech.onend = function (event) {
+            button.innerHTML = `<i class="fas fa-volume-off"></i>       `
+
+        };
 
         window.speechSynthesis.speak(speech);
         isSpeaking = true;
