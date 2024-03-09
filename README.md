@@ -46,7 +46,7 @@ Distributed under the MIT License.
 
 Your Name  
 Email: arycodes501@gmail.com  
-Twitter: [@twitter_handle](https://instagram.com/arycodes)
+Instagram: [@Instagram](https://instagram.com/arycodes)
 
 [Project Link](https://github.com/arycodes/arybot)
 [App Link](https://arybot.vercel.app)
