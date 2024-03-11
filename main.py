@@ -14,13 +14,9 @@ chat = model.start_chat(history=[])
 app = Flask(__name__)
 app.secret_key = "new"
 
-
 @app.route('/images/<path:filename>')
 def send_image(filename):
     return send_from_directory('static', filename)
-
-
-
 
 def get_gemini_response(question):
     response = chat.send_message(question, stream=False)
