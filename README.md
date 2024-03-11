@@ -44,7 +44,7 @@ Distributed under the MIT License.
 
 ## Contact
 
-Your Name  
+Aryan  
 Email: arycodes501@gmail.com  
 Instagram: [@Instagram](https://instagram.com/arycodes)
 
