@@ -14,6 +14,10 @@ chat = model.start_chat(history=[])
 app = Flask(__name__)
 app.secret_key = "new"
 
+@app.route('/assets/logo.png')
+def get_logo():
+    return send_from_directory('static', 'icon_trans.png')
+
 @app.route('/images/<path:filename>')
 def send_image(filename):
     return send_from_directory('static', filename)
