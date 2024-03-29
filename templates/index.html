@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AryBot-AryCodes Chat Interface - Chat with AryBot, a helpful bot created by AryCodes.">
+    <meta name="description"
+        content="AryBot-AryCodes Chat Interface - Chat with AryBot, a helpful bot created by AryCodes.">
     <meta name="keywords" content="AryBot, AryCodes, chat interface, AI chatbot">
     <meta name="author" content="AryCodes">
     <meta name="theme-color" content="#fff">
@@ -13,6 +14,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/stylesmain.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KB4267GPKF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KB4267GPKF');
+    </script>
 </head>
 
 <body>
@@ -46,7 +56,8 @@
     </script>
     <header id="header">
         <h1 style="color: black;margin: 0;" id="logoname">Arybot</h1>
-        <a href="https://github.com/arycodes/arybot" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" style="font-size: 20px;color: #333;"></i></a>
+        <a href="https://github.com/arycodes/arybot" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"
+                style="font-size: 20px;color: #333;"></i></a>
         <button id="install-button">Install App</button>
     </header>
     <div class="container">
