@@ -55,10 +55,14 @@
 
     </script>
     <header id="header">
-        <h1 style="color: black;margin: 0;" id="logoname">Arybot</h1>
+        <h1 style="color: black;margin: 0;" id="logoname">Arybot
+            <button id="popupTrigger">Try New!</button>
+        </h1>
         <a href="https://github.com/arycodes/arybot" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"
                 style="font-size: 20px;color: #333;"></i></a>
         <button id="install-button">Install App</button>
+
+
     </header>
     <div class="container">
         <div class="messagebox" id="messagebox">
@@ -81,6 +85,141 @@
             <button type="submit">Send</button>
         </form>
     </div>
+
+
+    <style>
+        #popupTrigger {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 4px 8px;
+            font-size: 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #popupTrigger:hover {
+            background-color: #0056b3;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333333;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .visit-btn,
+        .continue-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .visit-btn {
+            background-color: #007BFF;
+            color: #ffffff;
+        }
+
+        .continue-btn {
+            background-color: #eeeeee;
+            color: #333333;
+        }
+    </style>
+
+
+
+
+    <div id="popupDialog" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Explore Our New Arybot</h2>
+            <p>We're excited to introduce our updated version of Arybot, now available . Take a moment to
+                explore its enhanced features!</p>
+            <div class="button-container">
+                <button class="continue-btn" onclick="closePopup()">Not Now</button>
+                <button class="visit-btn" onclick="redirectToNewArybot()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showPopup() {
+            document.getElementById('popupDialog').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popupDialog').style.display = 'none';
+        }
+
+        function redirectToNewArybot() {
+            window.location.href = 'https://myarybot.web.app';
+        }
+
+        document.getElementById('popupTrigger').addEventListener('click', showPopup);
+
+
+
+        const lastCalledDate = localStorage.getItem('lastCalledDate');
+        const currentDate = new Date().toDateString();
+
+        if (lastCalledDate !== currentDate) {
+            showPopup();
+            localStorage.setItem('lastCalledDate', currentDate);
+        }
+
+    </script>
+
+
+
 
 
 
